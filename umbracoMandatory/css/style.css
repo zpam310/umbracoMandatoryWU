@@ -1,0 +1,126 @@
+.Highlight.Grey {
+  color: white;
+  background-color: lightslategrey; }
+
+.Highlight.Blue {
+  color: white;
+  background-color: darkslategrey; }
+
+.Highlight.White {
+  color: grey;
+  background-color: ghostwhite; }
+
+/* He: header/Nav Fo: footer */
+/* white text*/
+html {
+  position: relative;
+  height: 100%; }
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  min-height: 100%; }
+
+footer {
+  position: relative;
+  margin-top: -150px;
+  /* negative value of footer height */
+  height: 150px;
+  clear: both; }
+
+/* Portraits MEDIA QURRIUES WITH MIXIN*/
+/* HOW TO USE MIXIN IN MY STYLES */
+/*.profile-pic {
+  float: left;
+  width: 250px;
+  @include respond-to(handhelds) { width: 100% ;}
+  @include respond-to(medium-screens) { width: 125px; }
+  @include respond-to(wide-screens) { float: none; }
+}*/
+/*-------- Navbar STYLES              ---------------*/
+/*-------- Navbar STYLES              ---------------*/
+/*-------- Navbar STYLES              ---------------*/
+/*-------- Navbar STYLES              ---------------*/
+nav.navbar.navbar-default {
+  margin-bottom: 0; }
+
+.navbar.navbar-default.navbar-fixed-bottom {
+  margin-bottom: 0; }
+
+.navbar-default {
+  background-color: #e74c3c;
+  border-color: #c0392b; }
+  .navbar-default .navbar-brand {
+    color: #ecf0f1; }
+    .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+      color: #ffbbbc; }
+  .navbar-default .navbar-nav > li > a {
+    color: #ecf0f1; }
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+      color: #ffbbbc; }
+  .navbar-default .navbar-nav .active > a, .navbar-default .navbar-nav .active > a:hover, .navbar-default .navbar-nav .active > a:focus {
+    color: #ffbbbc;
+    background-color: #c0392b; }
+  .navbar-default .navbar-nav .open > a, .navbar-default .navbar-nav .open > a:hover, .navbar-default .navbar-nav .open > a:focus {
+    color: #ffbbbc;
+    background-color: #c0392b; }
+    .navbar-default .navbar-nav .open > a .caret, .navbar-default .navbar-nav .open > a:hover .caret, .navbar-default .navbar-nav .open > a:focus .caret {
+      border-top-color: #ffbbbc;
+      border-bottom-color: #ffbbbc; }
+  .navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ecf0f1;
+    border-bottom-color: #ecf0f1; }
+  .navbar-default .navbar-nav > .dropdown > a:hover .caret, .navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #ffbbbc;
+    border-bottom-color: #ffbbbc; }
+  .navbar-default .navbar-toggle {
+    border-color: #c0392b; }
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+      background-color: #c0392b; }
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #ecf0f1; }
+
+/*@media (max-width: 767px) {*/
+@media only screen and (min-width: 321px) and (max-width: 1023px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ecf0f1; }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+      color: #ffbbbc;
+      background-color: #c0392b; } }
+
+/*-------- HeaderImg STYLES              ---------------*/
+/*-------- HeaderImg STYLES              ---------------*/
+/*-------- HeaderImg STYLES              ---------------*/
+/*-------- HeaderImg STYLES              ---------------*/
+.wide {
+  background: url(../Media/1007/header.png) no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  height: 350px; }
+
+.wide img {
+  width: 100%; }
+
+.logo {
+  color: #900;
+  font-weight: 800;
+  font-size: 14pt;
+  padding: 25px;
+  text-align: center; }
+  @media only screen and (max-width: 320px) {
+    .logo {
+      width: 100%; } }
+  @media only screen and (min-width: 321px) and (max-width: 1023px) {
+    .logo {
+      width: 100%; } }
+
+.line {
+  padding-top: 20px;
+  white-space: no-wrap;
+  overflow: hidden;
+  text-align: center; }
+  @media only screen and (max-width: 320px) {
+    .line {
+      width: 100%; } }
+  @media only screen and (min-width: 321px) and (max-width: 1023px) {
+    .line {
+      width: 100%; } }

@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+
+@{ var selection = CurrentPage.Children.Where("Visible"); }
+
+@if (selection.Any())
+{
+
+    foreach (var item in selection)
+    {
+        <div class="col-lg-4 col-md-4 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">@item.articlesTitle</div>
+                <div class="panel-body">
+                    <div class="col-lg-8 col-md-8 col-xs-12">
+                        @item.articlesSneakPeak
+                        </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <a href="@item.Url" class="navbar-btn btn-danger btn pull-right">
+                            <span class="glyphicon glyphicon-star"></span>  Read more
+                        </a>
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+
+    }
+}

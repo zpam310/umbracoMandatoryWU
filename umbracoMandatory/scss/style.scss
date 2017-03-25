@@ -1,0 +1,164 @@
+﻿.Highlight.Grey {
+	color: white;
+	background-color: lightslategrey;
+}
+
+.Highlight.Blue {
+	color: white;
+	background-color: darkslategrey;
+}
+
+.Highlight.White {
+	color: grey;
+	background-color: ghostwhite;
+}
+
+$color-CrimsonRed: #900;
+$color-MetallicSiler: #BCC6CC;
+
+
+/* He: header/Nav Fo: footer */
+$color-HeFo: #626262;
+/* white text*/
+$color-WhiText: #ffffff;
+$color-green: #00FF00;
+
+
+html {
+    position: relative;
+    height: 100%;
+}
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    min-height: 100%;
+}
+footer {
+position: relative;
+	margin-top: -150px; /* negative value of footer height */
+	height: 150px;
+	clear:both;
+}
+
+/* Portraits MEDIA QURRIUES WITH MIXIN*/
+$break-small: 320px;
+$break-large: 1024px;
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+/* HOW TO USE MIXIN IN MY STYLES */
+/*.profile-pic {
+  float: left;
+  width: 250px;
+  @include respond-to(handhelds) { width: 100% ;}
+  @include respond-to(medium-screens) { width: 125px; }
+  @include respond-to(wide-screens) { float: none; }
+}*/
+
+/*-------- Navbar STYLES              ---------------*/
+/*-------- Navbar STYLES              ---------------*/
+/*-------- Navbar STYLES              ---------------*/
+/*-------- Navbar STYLES              ---------------*/
+$bgDefault      : #e74c3c;
+$bgHighlight    : #c0392b;
+$colDefault     : #ecf0f1;
+$colHover       : #ffbbbc;
+ 
+nav.navbar.navbar-default {
+    margin-bottom: 0;
+}
+.navbar.navbar-default.navbar-fixed-bottom {
+    margin-bottom: 0;
+}
+.navbar-default {
+    background-color: $bgDefault;
+    border-color: $bgHighlight;
+    .navbar-brand {
+        color: $colDefault;
+        &:hover, &:focus {
+            color: $colHover; }}
+    .navbar-nav {
+        > li {
+            > a {
+                color: $colDefault;
+                &:hover, &:focus {
+                    color: $colHover;   }}}
+        .active {
+            > a, > a:hover, > a:focus {
+                color: $colHover;
+                background-color: $bgHighlight; }}
+        .open {
+            > a, > a:hover, > a:focus {
+                color: $colHover;
+                background-color: $bgHighlight;
+                .caret {
+                    border-top-color: $colHover;
+                    border-bottom-color: $colHover; }}}
+        > .dropdown {
+            > a {
+                .caret {
+                    border-top-color: $colDefault;
+                    border-bottom-color: $colDefault; }
+                &:hover, &:focus {
+                    .caret {
+                        border-top-color: $colHover;
+                        border-bottom-color: $colHover; }}}}}
+    .navbar-toggle {
+        border-color: $bgHighlight;
+        &:hover, &:focus {
+            background-color: $bgHighlight; }
+        .icon-bar {
+            background-color: $colDefault; }}}
+
+/*@media (max-width: 767px) {*/
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        @include respond-to(medium-screens) {
+        color: $colDefault;
+        &:hover, &:focus {
+            color: $colHover;
+            background-color: $bgHighlight; }
+        }
+        }
+
+
+/*-------- HeaderImg STYLES              ---------------*/
+/*-------- HeaderImg STYLES              ---------------*/
+/*-------- HeaderImg STYLES              ---------------*/
+/*-------- HeaderImg STYLES              ---------------*/
+.wide { 
+  	background: url(../Media/1007/header.png) no-repeat center center;
+	background-size: cover;
+	text-align: center;
+	height: 350px;
+}
+
+.wide img {
+  width:100%;
+}
+
+.logo {
+  color: $color-CrimsonRed;
+  font-weight:800;
+  font-size:14pt;
+  padding:25px;
+  text-align:center;
+  @include respond-to(handhelds) { width: 100% ;}
+  @include respond-to(medium-screens) { width: 100%;}
+}
+
+.line {
+  padding-top:20px;
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+  @include respond-to(handhelds) { width: 100% ;}
+  @include respond-to(medium-screens) { width: 100% ;}
+}

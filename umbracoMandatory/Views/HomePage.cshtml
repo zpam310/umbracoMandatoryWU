@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+<!-- Master starter Container-fluid og row -->
+<div class="col-lg-10 col-md-10 col-xs-12">
+    @Umbraco.Field("mainContent")
+    </div> 
+<div class="col-lg-2 col-md-2 col-xs-12">
+    <h2>See the 5 latest finished projects</h2>
+    @Umbraco.RenderMacro("fiveNewestCompetedProjects")
+    </div>
+

@@ -1,0 +1,57 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Members>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Newtonsoft.Json;
+@using Umbraco.Web.Models;
+@{
+	Layout = "Master.cshtml";
+}
+
+@{
+    var memberService = ApplicationContext.Current.Services.MemberService;
+    var members = memberService.GetMembersByGroup("Active");
+}
+<div class="row">
+    <h2>A list of all the members</h2>
+
+    @foreach (var member in members)
+    {
+        String[] skills = member.GetValue("skills").ToString().Split(',');
+        string skillString =
+        string.Join(", ", from skill in skills
+                          select umbraco.library.GetPreValueAsString(Convert.ToInt32(skill)));
+        if (member.GetValue("photo") != null)
+        {
+            string image = member.GetValue<string>("photo");
+            if (image != null)
+            {
+                var imageCrop = JsonConvert.DeserializeObject<ImageCropDataSet>
+                    (image);
+                var imagePath = imageCrop.Src.GetCropUrl(width: 100);
+    <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>@member.Name: Profile</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <img src="@imagePath " style="height:100px;" alt="@member.Name" />
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p>
+                            <strong>Name:</strong> @member.Name <br>
+                            <strong>Adresse:</strong> @member.GetValue("address")<br>
+                            <strong>Zip:</strong> @member.GetValue("zip")
+                            <strong>City:</strong> @member.GetValue("city") <br>
+                            <strong>Email:</strong> @member.Email<br>
+                        </p>
+                        <h3>Skills:</h3>
+                        <span>@skillString</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    }
+                    }
+                    }
+                </div>

@@ -1,0 +1,63 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@Umbraco.Field("siteTitle")</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- HTML af Menu i Menu.cshtml -->
+    @Umbraco.RenderMacro("Menu")
+    <div class="wide">
+        <div class="col-xs-5 line"><hr></div>
+
+        <div class="col-xs-2 logo">
+            <!-- Tjek hvis det er forsiden eller ej Så print sidenstitel -->
+            @if (CurrentPage.Name == "HomePage")
+            {
+                @Umbraco.Field("siteTitle")
+            }
+            else
+            {
+                @(CurrentPage.Name);
+            }
+        </div>
+        <div class="col-xs-5 line"><hr></div>
+    </div>
+    <div class="row">
+        @if (CurrentPage.Name == "About Us")
+        {  //
+        }
+        else
+        { @Html.Partial("Breadcrumb") }
+    </div>
+    <div class="container">
+        <div class="row">   
+            @RenderBody()
+        </div>
+    </div>
+    
+    <footer>
+        <div class="navbar navbar-default navbar-fixed-bottom">
+                <p class="navbar-text pull-left">
+                    Copyright © 2017 Aarhus Web Developers Network
+                </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

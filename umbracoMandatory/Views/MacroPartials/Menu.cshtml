@@ -1,0 +1,69 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+@{
+    var root = CurrentPage.AncestorOrSelf(1);
+    var projectDropdown = CurrentPage.AncestorOrSelf(1)
+    .Children.Where("DocumentTypeAlias == \"projectsOverview\"")
+    .First()
+    .Children
+    .Where("Visible")
+    .OrderBy("Name");
+}
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"> <img style="width:70px; height:20px" src="~/Media/1005/umbracoLogo.png" /></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="@(CurrentPage.Name == root.Name ? "active" : null)">
+                <a href="/">@root.Name</a>
+            </li>
+
+
+            @foreach (var menuItem in root.Children.Where("Visible"))
+            {
+                if (menuItem.Name == "Projects")
+                {
+                    <li class="@(menuItem.IsAncestorOrSelf(CurrentPage) ? "active" : null)">
+                        <a href="@menuItem.Url">All projects</a>
+                    </li>
+                }
+                if (menuItem.Name != "Projects")
+                {
+                    <li class="@(menuItem.IsAncestorOrSelf(CurrentPage) ? "active" : null)">
+                        <a href="@menuItem.Url">@menuItem.Name</a>
+                    </li>
+
+                }
+                else
+                {
+                    <li class="dropdown @(menuItem.IsAncestorOrSelf(CurrentPage) ? "active" :null)">
+                        <a href="/projects" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @foreach (var subMenuItem in projectDropdown)
+                            {
+                                var isProtected = umbraco.library.IsProtected(menuItem.id, menuItem.path);
+                                var loginAccess = umbraco.library.IsProtected(menuItem.id, menuItem.path) && umbraco.library.HasAccess(menuItem.id, menuItem.path);
+                                if (!isProtected || loginAccess)
+                                {
+                                    <li @(subMenuItem.IsAncestorOrSelf(CurrentPage) ? "active" : null)>
+                                        <a href="@subMenuItem.Url">@subMenuItem.Name"</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
